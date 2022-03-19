@@ -25,6 +25,11 @@ class MyApp extends StatelessWidget {
     return Container(
       color: Colors.white,
       child: Column(
+        //mainAxisSize: MainAxisSize.min,
+        mainAxisSize: MainAxisSize.max,
+        //mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        //mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           _button(),
           _button(),
