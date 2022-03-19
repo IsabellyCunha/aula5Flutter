@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
   _body() {
     return Container(
       color: Colors.white,
-      child: Row(
+      child: Column(
         children: <Widget>[
           _button(),
           _button(),
