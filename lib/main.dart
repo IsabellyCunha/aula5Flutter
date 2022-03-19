@@ -24,8 +24,12 @@ class MyApp extends StatelessWidget {
   _body() {
     return Container(
       color: Colors.white,
-      child: Center(
-        child: _button(),
+      child: Row(
+        children: <Widget>[
+          _button(),
+          _button(),
+          _button(),
+        ],
       ),
     );
   }
@@ -39,7 +43,7 @@ class MyApp extends StatelessWidget {
       //},
       onPressed: onClick,
       child: Text(
-        "Confirmar",
+        "Ok",
         style: TextStyle(
           color: Colors.white,
           fontSize: 30,
