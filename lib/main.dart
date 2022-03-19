@@ -1,10 +1,35 @@
 import 'package:flutter/material.dart';
-import 'home.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TelaInicial();
+  }
+}
+
+class TelaInicial extends StatefulWidget {
+  const TelaInicial({Key? key}) : super(key: key);
+
+  @override
+  _TelaInicialState createState() => _TelaInicialState();
+}
+
+class _TelaInicialState extends State<TelaInicial> {
+  TextEditingController nomeController = TextEditingController();
+
+  String exibicaoNome = "Seu Nome aqui...";
+
+  void _exibeNome() {
+    setState(() {
+      String nome = nomeController.text;
+
+      exibicaoNome = "Seu nome é: $nome";
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,20 +48,35 @@ class MyApp extends StatelessWidget {
 
   _body() {
     return Container(
-      color: Colors.white,
+      width: double.infinity,
+      color: Colors.white10,
       child: Column(
-        //mainAxisSize: MainAxisSize.min,
         mainAxisSize: MainAxisSize.max,
-        //mainAxisAlignment: MainAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
-        //mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
+          _campo(),
           _button(),
-          _button(),
-          _button(),
+          _texto(),
         ],
       ),
     );
+  }
+
+  _campo() {
+    return TextField(
+      keyboardType: TextInputType.text,
+      decoration: InputDecoration(
+          labelText: "Digite o seu nome",
+          labelStyle: TextStyle(color: Colors.green)),
+      textAlign: TextAlign.center,
+      style: TextStyle(color: Colors.green, fontSize: 25.0),
+      controller: nomeController,
+    );
+  }
+
+  _texto() {
+    return Text(exibicaoNome);
   }
 
   _button() {
@@ -46,18 +86,14 @@ class MyApp extends StatelessWidget {
       //onPressed: () {
       //print("Okay!");
       //},
-      onPressed: onClick,
+      onPressed: _exibeNome,
       child: Text(
-        "Ok",
+        "OK",
         style: TextStyle(
           color: Colors.white,
-          fontSize: 30,
+          fontSize: 20,
         ),
       ),
     );
-  }
-
-  onClick() {
-    print("Clicou aqui");
   }
 }
